@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#mainHolder{
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+#animTextHolder{
+    /* background: rgb(50, 173, 173); */
+    background-color: #262525;
+    padding: 20px 30px;
+    color: white;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+
+
+/* ---------------------- new css of the texts --------------  */
+
+span {
+    font-family: "Cutive Mono", monospace;
+    color: white;
+    opacity: 0;
+}
+
+
+
+@-webkit-keyframes anim {
+    0% {
+        opacity: 0;
+        text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
+    }
+
+    66% {
+        opacity: 1;
+        text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9);
+    }
+
+    77% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+        text-shadow: 0px 0px 20px rgba(255, 255, 255, 0);
+    }
+}
+
+
+
+
+@keyframes anim {
+    0% {
+        opacity: 0;
+        text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
+    }
+
+    66% {
+        opacity: 1;
+        /* text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9); */
+        text-shadow: 0px 0px 20px #fff;
+    }
+
+    77% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+        text-shadow: 0px 0px 20px rgba(255, 255, 255, 0);
+    }
+}
+
+button {
+    margin-top: 50px;
+    padding: 8px 30px;
+    color: white;
+    background-color: teal;
+    border-radius: 25px;
+    font-size: 15px;
+    border: none;
+    margin-right: 25px;
+}
+
+
+
+.js-spanize {
+    color: white;
+}
+
+.items_holder {
+    font-family: "Cutive Mono", monospace;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    /* white-space: pre; */
+}
+
+
+
+@media only screen and (max-width: 650px){
+    .items_holder {
+        white-space: normal;
+    }
+}
+
+
+

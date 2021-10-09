@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title> Text Animation </title>
+</head>
+
+<body>
+
+
+    <div id="mainHolder">
+
+
+        <div id="animTextHolder">
+
+            <div id="paras_holder">
+                <p class="items_holder">
+                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                </p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+
+
+
+        // setting span to all texts under the specified element items_holder
+        (function ($) {
+            var s,
+                spanizeLetters = {
+                    settings: {
+                        letters: $('.items_holder'),
+                    },
+                    init: function () {
+                        s = this.settings;
+                        this.bindEvents();
+                    },
+                    bindEvents: function () {
+                        s.letters.html(function (i, el) {
+                            //spanizeLetters.joinChars();
+                            var spanizer = $.trim(el).split("");
+                            return '<span class="item">' + spanizer.join('</span><span class="item">') + '</span>';
+                        });
+                    },
+                };
+            spanizeLetters.init();
+        })(jQuery);
+
+
+
+
+
+
+        // setting the functions for all dynamically!... 
+        $(document).ready(function () {
+
+            var numItems = $('.item').length;
+            let seconds = 0;
+
+            // functions for pc for mousedown and mouseup 
+            $("#mainHolder").on("mousedown", function () {
+                $("span").css("animation", "anim 0.7s ease both");
+                $("span").css("animation-play-state", "running");
+                $("span").css("-webkit-animation-play-state", "running");
+
+                for (let i = 1; i <= numItems; i++) {
+                    // console.log(i);
+                    $(".item:nth-child(" + i + ")").addClass("item" + seconds);
+                    $(".item:nth-child(" + i + ")").css("animation-delay", + i / 10 + "s");
+                    seconds = seconds + 1;
+
+                }
+
+
+                $("#mainHolder").on("mouseup", function () {
+                    $("span").css("animation-play-state", "paused");
+                    $("span").css("-webkit-animation-play-state", "paused");
+                });
+
+
+            });
+
+
+            // functions for mobile touch start and end
+            $("#mainHolder").on("touchstart", function () {
+                $("span").css("animation", "anim 0.7s ease both");
+                $("span").css("animation-play-state", "running");
+                $("span").css("-webkit-animation-play-state", "running");
+
+                for (let i = 1; i <= numItems; i++) {
+                    // console.log(i);
+                    $(".item:nth-child(" + i + ")").addClass("item" + seconds);
+                    $(".item:nth-child(" + i + ")").css("animation-delay", + i / 10 + "s");
+                    seconds = seconds + 1;
+                }
+
+                $("#mainHolder").on("touchend", function () {
+                    $("span").css("animation-play-state", "paused");
+                    $("span").css("-webkit-animation-play-state", "paused");
+                });
+
+
+            });
+
+
+
+        });
+
+    </script>
+</body>
+
+</html>
